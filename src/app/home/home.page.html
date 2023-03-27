@@ -1,0 +1,133 @@
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title> Calcular Frete </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-item>
+    <ion-label position="stacked">Distância</ion-label>
+    <ion-input
+      type="number"
+      placeholder="em km"
+      [(ngModel)]="distancia"
+    ></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Peso</ion-label>
+    <ion-input type="number" placeholder="em kg" [(ngModel)]="peso"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Quantidade de Produtos</ion-label>
+    <ion-input
+      type="number"
+      placeholder="00"
+      [(ngModel)]="quantidade"
+    ></ion-input>
+  </ion-item>
+
+  <ion-button expand="block" (click)="calcular()">Calcular Frete</ion-button>
+
+  <!-- <ion-input [readonly]="true" value="{{frete}}"></ion-input> !-->
+
+  <ion-list>
+    <ion-radio-group value="strawberries">
+      <ion-item>
+        <ion-label>Entrega Normal: R${{this.frete}}</ion-label>
+        <ion-radio slot="end" value="1" color="tertiary"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Entrega Express: R${{this.entrega.express}}</ion-label>
+        <ion-radio slot="end" value="0.1" color="tertiary"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Entrega Agendada: R${{this.entrega.agendada}}</ion-label>
+        <ion-radio slot="end" value="0.2" color="tertiary"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+  </ion-list>
+
+  <ion-accordion-group>
+
+    <ion-accordion value="second">
+      <ion-item slot="header" color="light">
+        <ion-label>Descontos por Quantidade</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">
+
+        <ion-item>
+          <ion-label position="stacked">Desconto para até 3 produtos</ion-label>
+          <ion-input
+            type="number"
+            placeholder="em decimal (0.1)"
+            [(ngModel)]="desconto.ate3"
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Desconto de 4 a 5 produtos</ion-label>
+          <ion-input
+            type="number"
+            placeholder="em decimal (0.1)"
+            [(ngModel)]="desconto.ate5"
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Desconto de 6 a 10 produtos</ion-label>
+          <ion-input
+            type="number"
+            placeholder="em decimal (0.1)"
+            [(ngModel)]="desconto.ate10"
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Desconto para acima de 11 produtos</ion-label>
+          <ion-input
+            type="number"
+            placeholder="em decimal (0.1)"
+            [(ngModel)]="desconto.acimaDe11"
+          ></ion-input>
+        </ion-item>
+
+      </div>
+    </ion-accordion>
+    <ion-accordion>
+      <ion-item slot="header" color="light">
+        <ion-label>Preços por Distância</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">
+
+        <ion-item>
+          <ion-label position="stacked">Preço por Km em reais</ion-label>
+          <ion-input
+            type="number"
+            placeholder="em decimal (0.1)"
+            [(ngModel)]="km"
+          ></ion-input>
+        </ion-item>
+
+      </div>
+    </ion-accordion>
+
+    <ion-accordion>
+      <ion-item slot="header" color="light">
+        <ion-label>Preços por Peso</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">
+
+        <ion-item>
+          <ion-label position="stacked">Preço por Kg em reais</ion-label>
+          <ion-input
+            type="number"
+            placeholder="em decimal (0.1)"
+            [(ngModel)]="kg"
+          ></ion-input>
+        </ion-item>
+
+      </div>
+    </ion-accordion>
+  </ion-accordion-group>
+
+</ion-content>
